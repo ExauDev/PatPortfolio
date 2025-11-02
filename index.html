@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Exaucé PATOMA</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <meta name="description" content="Portfolio professionnel d'Exaucé PATOMA — Développeur Web & Technicien Digital" />
+
+  <style>
+    :root {
+      --primary: #0d6efd;
+      --accent: #6610f2;
+      --bg: #f8f9fa;
+      --text: #222;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; padding: 0; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* === NAVBAR === */
+    .navbar {
+      transition: background-color .25s ease, box-shadow .25s ease;
+      backdrop-filter: blur(6px);
+    }
+    .navbar.scrolled {
+      background-color: rgba(255,255,255,0.9);
+      box-shadow: 0 6px 20px rgba(10,10,10,0.07);
+    }
+
+    .nav-link { color: inherit; transition: color .3s ease; }
+    .nav-link:hover { color: var(--primary); }
+
+
+
+    /* === HERO SECTION === */
+    .hero-section {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      position: relative;
+      color: #fff;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+      border-radius: 50%;
+      animation: floatingLight 6s ease-in-out infinite alternate;
+    }
+    @keyframes floatingLight {
+      from { transform: translate(0,0); opacity: 0.8; }
+      to { transform: translate(50px,50px); opacity: 0.3; }
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+    .profile-photo-wrapper {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      border: 4px solid rgba(255,255,255,0.6);
+      box-shadow: 0 0 25px rgba(255,255,255,0.25);
+      position: relative;
+    }
+    .profile-photo-wrapper::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      box-shadow: 0 0 60px rgba(13,110,253,0.8);
+      animation: pulse 3s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 40px rgba(13,110,253,0.5); }
+      50% { box-shadow: 0 0 70px rgba(102,16,242,0.9); }
+    }
+    .profile-photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .hero-name {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      margin-bottom: .5rem;
+    }
+
+    .cursor {
+      display: inline-block;
+      background-color: #fff;
+      width: 2px;
+      margin-left: 3px;
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .hero-buttons .btn { transition: all 0.3s ease-in-out; }
+    .hero-buttons .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255,255,255,0.25);
+    }
+
+        /* === A PROPOS === */
+    #about {
+      padding: 5rem 0;
+      background: var(--bg);
+    }
+    #about h2 {
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+    }
+    #about p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #555;
+    }
+    #about .card {
+      border: none;
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+      transition: transform .3s ease;
+    }
+    #about .card:hover { transform: translateY(-5px); }
+/* === TECHNOLOGIES === */
+/* Défilement fluide horizontal */
+.tech-scroll {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.tech-track {
+  display: flex;
+  gap: 1.5rem;
+  animation: scrollLeft 20s linear infinite;
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Carte individuelle */
+.tech-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  padding: 1.5rem 1rem;
+  min-width: 130px;
+  flex: 0 0 auto;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-card i {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.tech-card h6 {
+  font-weight: 600;
+  font-size: .9rem;
+  margin: 0;
+}
+
+.tech-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(13,110,253,0.15);
+}
+
+/* Couleur personnalisée Bootstrap */
+.text-purple { color: #6f42c1; }
+.text-indigo { color: #6610f2; }
+
+/* Mode sombre */
+body.dark .tech-card {
+  background: #0f172a;
+  color: #e2e8f0;
+  box-shadow: 0 0 20px rgba(13,110,253,0.12);
+}
+
+    
+    /* === SECTIONS === */
+    section { padding: 4.5rem 0; }
+    .container-small { max-width: 1000px; margin: 0 auto; }
+
+    h2.section-title {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    /* === SKILLS === */
+    .progress { height: 10px; border-radius: 999px; overflow: hidden; }
+    .progress .progress-bar { transition: width .8s ease; }
+
+    /* === PROJECTS === */
+    .project-card {
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.05);
+      background: var(--card);
+      padding: 1.25rem;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(13,110,253,0.1);
+    }
+
+
+    /* === SERVICES === */
+#services {
+  background: var(--card);
+}
+
+.service-card {
+  background: var(--card);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(13,110,253,0.1);
+}
+
+.icon-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 1.8rem;
+  box-shadow: 0 6px 15px rgba(13,110,253,0.3);
+}
+
+/* Mode sombre */
+body.dark #services {
+  background: #0b1220;
+}
+body.dark .service-card {
+  background: #0f1720;
+  color: var(--text);
+  border-color: rgba(255,255,255,0.06);
+}
+/* === ANIMATION D’APPARITION === */
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* === M'EMBAUCHER === */
+#hire {
+  background: var(--card);
+}
+
+.drop-zone {
+  background: rgba(13,110,253,0.02);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.drop-zone:hover {
+  background: rgba(13,110,253,0.06);
+  border-color: var(--primary);
+}
+.drop-zone.dragover {
+  background: rgba(13,110,253,0.1);
+  border-color: var(--accent);
+}
+
+/* Mode sombre */
+body.dark #hire {
+  background: #0b1220;
+}
+body.dark .drop-zone {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.1);
+}
+body.dark .drop-zone:hover {
+  border-color: var(--accent);
+}
+
+
+
+/* === CONTACT === */
+#contact {
+  background: var(--bg);
+}
+#contact .card {
+  border-radius: 12px;
+  background: var(--card);
+}
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  background: rgba(13,110,253,0.1);
+  color: var(--primary);
+  border-radius: 8px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+.social-links a:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-4px);
+}
+
+/* Mode sombre */
+body.dark #contact {
+  background: #0b1220;
+}
+body.dark #contact .card {
+  background: #0f1720;
+  color: var(--text);
+  border-color: rgba(255,255,255,0.06);
+}
+body.dark .social-links a {
+  background: rgba(255,255,255,0.08);
+  color: var(--accent);
+}
+body.dark .social-links a:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+    /* === FOOTER === */
+.site-footer {
+  background: linear-gradient(90deg, #0d6efd, #6610f2);
+  color: #fff;
+  border-top: 3px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.site-footer .footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.site-footer .social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+.site-footer .social-link:hover {
+  background: #fff;
+  color: #0d6efd;
+  transform: translateY(-4px);
+}
+
+/* Mode sombre */
+body.dark .site-footer {
+  background: linear-gradient(90deg, #0b1220, #1a2130);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+body.dark .site-footer .social-link:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+    /* === BACK TO TOP === */
+    #topBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(13,110,253,0.25);
+      transition: all .3s ease;
+    }
+    #topBtn:hover { transform: translateY(-3px); background-color: var(--accent); }
+
+    /* === DARK MODE === */
+    body.dark {
+      --bg: #0f1720;
+      --text: #e6eef8;
+      --card: #0b1220;
+      --primary: #0ea5ff;
+      --accent: #60a5fa;
+      background: linear-gradient(180deg, #071026, #071426);
+      color: var(--text);
+    }
+
+    /* === SMALL SCREENS === */
+    @media (max-width:575px) {
+      .profile-photo-wrapper { width: 120px; height: 120px; }
+      .hero-name { font-size: 1.6rem; }
+    }
+
+
+    /* === MES PROJETS AVEC IMAGES === */
+.project-card {
+  background: var(--card);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(13,110,253,0.12);
+}
+
+.project-image {
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+}
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.project-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Mode sombre */
+body.dark .project-card {
+  background: #0f1720;
+  color: var(--text);
+  border-color: rgba(255,255,255,0.06);
+}
+
+
+  </style>
+</head>
+
+
+<body>
+  <!-- NAV -->
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="#home">Exaucé PATOMA</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navCollapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#technologies">Technologies</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-3">
+            <button id="themeToggle" class="btn btn-outline-primary btn-sm">
+              <i id="themeIcon" class="bi bi-moon-fill"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero-section">
+    <div class="hero-content">
+      <div class="profile-photo-wrapper">
+        <img src="images/profil.jpg" alt="Photo d'Exaucé Patoma" loading="lazy"
+             onerror="this.src='https://via.placeholder.com/300?text=Photo'">
+      </div>
+      <h1 class="hero-name"><span id="typing-text"></span><span class="cursor">|</span></h1>
+      <p class="lead">Développeur Web • Technicien Digital • Spécialiste en Maintenance & Digitalisation</p>
+      <div class="hero-buttons d-flex flex-wrap justify-content-center gap-3 mt-3">
+        <!-- <a href="CV APP PATOMA.pdf" class="btn btn-light btn-lg shadow-sm" download>
+          <i class="bi bi-file-earmark-arrow-down"></i> Télécharger mon CV
+        </a> -->
+        <a href="#contact" class="btn btn-outline-light btn-lg shadow-sm">
+          <i class="bi bi-envelope"></i> Me contacter
+        </a>
+      </div>
+      <p class="mt-4 text-white-50 small">Étudiant en Sciences Informatiques de Gestion — ISC Kisangani</p>
+    </div>
+  </header>
+
+  <!-- === Autres sections === -->
+  <!-- (Tu peux garder ton contenu “À propos”, “Compétences”, “Projets”, “Contact”, inchangé ici) -->
+  <!-- À PROPOS -->
+  <section id="about">
+    <div class="container">
+      <h2>À propos de moi</h2>
+      <div class="row align-items-center g-4">
+        <div class="col-md-7">
+          <p>
+            Je suis <strong>Exaucé PATOMA LIMBANGA</strong>, étudiant en <strong>Sciences Informatiques de Gestion</strong> 
+            à l’Institut Supérieur de Commerce de Kisangani. Passionné par la technologie, le web et la digitalisation, 
+            j’aime concevoir des sites modernes, performants et esthétiques.
+          </p>
+          <p>
+            Mes domaines d’intérêt incluent le développement web, la maintenance informatique, et la création 
+            d’applications numériques utiles à la communauté. Je vise à allier esthétique, performance et 
+            expérience utilisateur dans chaque projet.
+          </p>
+        </div>
+        <div class="col-md-5">
+          <div class="card p-4 text-center">
+            <h5 class="fw-bold mb-3">Informations personnelles</h5>
+            <ul class="list-unstyled mb-0">
+              <li><i class="bi bi-person-fill text-primary"></i>  <strong>Nom:</strong> Exaucé PATOMA LIMBANGA</li>
+              <li><i class="bi bi-envelope-fill text-primary"></i>  <strong>Email:</strong> <a href="mailto:exaucepatoma4@gmail.com">exaucepatoma4@gmail.com</a></li>
+              <li><i class="bi bi-telephone-fill text-primary"></i>  <strong>Téléphone:</strong> +243 827 612 274</li>
+              <li><i class="bi bi-geo-alt-fill text-primary"></i>  <strong>Adresse:</strong> Kisangani, RD Congo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- TECHNOLOGIES -->
+<section id="technologies" class="py-5 bg-light overflow-hidden">
+  <div class="container text-center">
+    <h2 class="text-primary fw-bold mb-5 text-uppercase">Technologies</h2>
+    <p class="lead text-muted mb-5">Voici les outils et langages que j’utilise régulièrement dans mes projets :</p>
+
+    <!-- Défilement horizontal -->
+    <div class="tech-scroll">
+      <div class="tech-track d-flex justify-content-center align-items-center">
+
+        <!-- HTML -->
+        <div class="tech-card">
+          <i class="bi bi-filetype-html text-danger"></i>
+          <h6>HTML5</h6>
+        </div>
+
+        <!-- CSS -->
+        <div class="tech-card">
+          <i class="bi bi-filetype-css text-primary"></i>
+          <h6>CSS3</h6>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="tech-card">
+          <i class="bi bi-filetype-js text-warning"></i>
+          <h6>JavaScript</h6>
+        </div>
+
+        <!-- Bootstrap -->
+        <div class="tech-card">
+          <i class="bi bi-bootstrap text-purple"></i>
+          <h6>Bootstrap</h6>
+        </div>
+
+        <!-- PHP -->
+        <div class="tech-card">
+          <i class="bi bi-filetype-php text-indigo"></i>
+          <h6>PHP</h6>
+        </div>
+
+        <!-- WordPress -->
+        <div class="tech-card">
+          <i class="bi bi-wordpress text-info"></i>
+          <h6>WordPress</h6>
+        </div>
+
+        <!-- Répétition pour boucle fluide -->
+        <div class="tech-card">
+          <i class="bi bi-filetype-html text-danger"></i>
+          <h6>HTML5</h6>
+        </div>
+        <div class="tech-card">
+          <i class="bi bi-filetype-css text-primary"></i>
+          <h6>CSS3</h6>
+        </div>
+        <div class="tech-card">
+          <i class="bi bi-filetype-js text-warning"></i>
+          <h6>JavaScript</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- SERVICES -->
+<section id="services" class="py-5 bg-white">
+  <div class="container text-center">
+    <h2 class="text-primary fw-bold mb-5 text-uppercase">Mes services</h2>
+    <p class="lead text-muted mb-5">Voici quelques services que je propose avec professionnalisme et passion :</p>
+
+    <div class="row g-4 justify-content-center">
+      <!-- Service 1 -->
+      <div class="col-md-4" class="reveal">
+        <div class="service-card p-4 rounded-4 shadow-sm h-100">
+          <div class="icon-circle mb-3">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <h5 class="fw-bold mb-2">Développement Web</h5>
+          <p class="text-muted small">
+            Conception de sites modernes et performants avec HTML, CSS, JavaScript et Bootstrap.  
+            Je transforme vos idées en solutions digitales sur mesure.
+          </p>
+        </div>
+      </div>
+
+   <!-- Service 2 -->
+<div class="col-md-4 reveal">
+  <div class="service-card p-4 rounded-4 shadow-sm h-100 text-center">
+    <div class="icon-circle mb-3 bg-gradient">
+      <i class="bi bi-gear-fill text-primary display-5"></i>
+    </div>
+    <h5 class="fw-bold mb-2">Maintenance Informatique</h5>
+    <p class="text-muted small">
+      Réparation, configuration, nettoyage et optimisation de vos ordinateurs  
+      pour garantir des performances stables et durables.
+    </p>
+  </div>
+</div>
+
+
+      <!-- Service 3 -->
+      <div class="col-md-4" class="reveal">
+        <div class="service-card p-4 rounded-4 shadow-sm h-100">
+          <div class="icon-circle mb-3">
+            <i class="bi bi-lightbulb-fill"></i>
+          </div>
+          <h5 class="fw-bold mb-2">Transformation Digitale</h5>
+          <p class="text-muted small">
+            Accompagnement des entreprises et entrepreneurs vers la digitalisation :  
+            outils collaboratifs, visibilité en ligne et automatisation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="col-md-4" class="reveal">
+        <div class="service-card p-4 rounded-4 shadow-sm h-100">
+          <div class="icon-circle mb-3">
+            <i class="bi bi-brush-fill"></i>
+          </div>
+          <h5 class="fw-bold mb-2">Design & Branding</h5>
+          <p class="text-muted small">
+            Création d’identités visuelles simples, élégantes et adaptées à votre marque.  
+            Logos, cartes de visite, affiches et contenus digitaux.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+<!-- MES PROJETS -->
+<section id="projects" class="py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="text-primary fw-bold mb-5 text-uppercase">Mes projets récents</h2>
+    <p class="lead text-muted mb-5">Voici quelques réalisations que j’ai conçues avec passion et expertise :</p>
+
+    <div class="row g-4 justify-content-center">
+      
+      <!-- Projet 1 -->
+      <div class="col-md-4 reveal">
+        <div class="project-card rounded-4 shadow-sm h-100 overflow-hidden">
+          <div class="project-image">
+            <img src="images/librairie.png" alt="Application de gestion de vente" loading="lazy" 
+                 onerror="this.src='https://via.placeholder.com/600x400?text=Projet+1';">
+          </div>
+          <div class="p-4 d-flex flex-column">
+            <h5 class="fw-bold mb-2">Application de gestion de vente</h5>
+            <p class="text-muted small mb-3">
+              Application web développée pour la <strong>Librairie Pauline</strong> permettant la gestion des ventes, 
+              du stock et de la facturation.
+            </p>
+            <small class="text-muted mt-auto">Technos : HTML, CSS, JS, PHP, Bootstrap, MySQL</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projet 2 -->
+      <div class="col-md-4 reveal">
+        <div class="project-card rounded-4 shadow-sm h-100 overflow-hidden">
+          <div class="project-image">
+            <img src="images/img_istm.png" alt="Site institutionnel" loading="lazy"
+                 onerror="this.src='https://via.placeholder.com/600x400?text=Projet+2';">
+          </div>
+          <div class="p-4 d-flex flex-column">
+            <h5 class="fw-bold mb-2">Site institutionnel</h5>
+            <p class="text-muted small mb-3">
+              Conception d’un site web responsive et professionnel pour un institut local, 
+              intégrant un design moderne et un référencement naturel optimisé.
+            </p>
+            <small class="text-muted mt-auto">Technos : WordPress</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projet 3 -->
+      <div class="col-md-4 reveal">
+        <div class="project-card rounded-4 shadow-sm h-100 overflow-hidden">
+          <div class="project-image">
+            <img src="images/img_mobile.jpg" alt="Application mobile CONFPROG" loading="lazy"
+                 onerror="this.src='https://via.placeholder.com/600x400?text=Projet+3';">
+          </div>
+          <div class="p-4 d-flex flex-column">
+            <h5 class="fw-bold mb-2">Application mobile (Formation CONFPROG)</h5>
+            <p class="text-muted small mb-3">
+              Prototype d’application mobile développé durant ma formation, 
+              centré sur l’expérience utilisateur et l’ergonomie.
+            </p>
+            <small class="text-muted mt-auto">Technos : WinDev Mobile, WLangage, HFSQL</small>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- M'EMBAUCHER -->
+<section id="hire" class="py-5 bg-white">
+  <div class="container">
+    <h2 class="text-center fw-bold text-primary text-uppercase mb-4">M'EMBAUCHER</h2>
+    <div class="underline mx-auto mb-5" style="width:90px;height:3px;background:var(--primary);border-radius:5px;"></div>
+
+    <form id="hireForm" class="card shadow-sm p-4 mx-auto" style="max-width:700px;">
+      <!-- Nom / Entreprise -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Votre nom ou d’entreprise</label>
+        <input type="text" class="form-control" placeholder="Ex: Exaucé Digital ou Société X" required>
+      </div>
+
+      <!-- Téléphone / Email -->
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Téléphone</label>
+          <input type="tel" class="form-control" placeholder="+243 ..." required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Email</label>
+          <input type="email" class="form-control" placeholder="exemple@mail.com" required>
+        </div>
+      </div>
+
+      <!-- Zone de dépôt de fichier -->
+      <div class="mb-3 mt-4">
+        <label class="form-label fw-semibold">Détails du projet + Budget (PDF ou DOCX)</label>
+        <div id="dropZone" class="drop-zone text-center p-4 border border-2 border-dashed rounded-3">
+          <i class="bi bi-cloud-arrow-up display-6 text-primary mb-2"></i>
+          <p class="text-muted small">Glissez-déposez un fichier ou cliquez pour sélectionner<br>
+          <strong>Formats acceptés :</strong> PDF, DOCX</p>
+          <input type="file" id="fileInput" accept=".pdf,.docx" hidden>
+        </div>
+      </div>
+
+      <!-- Zone de texte alternative -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Pas de fichier ? Saisissez ici :</label>
+        <textarea rows="4" class="form-control" placeholder="Décrivez brièvement votre projet, besoins et budget..."></textarea>
+      </div>
+
+      <!-- Bouton -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary px-5 py-2 fw-semibold" 
+                style="background:linear-gradient(90deg,#0d6efd,#6610f2);border:none;">
+          <i class="bi bi-send"></i> SOUMETTRE
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center text-primary fw-bold text-uppercase mb-4">Contact</h2>
+    <div class="underline mx-auto mb-5" style="width:80px;height:3px;background:var(--primary);border-radius:5px;"></div>
+
+    <div class="row g-4">
+      <!-- Formulaire -->
+      <div class="col-lg-6">
+        <form id="contactForm" class="card p-4 shadow-sm border-0">
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Nom complet</label>
+            <input type="text" id="name" class="form-control" placeholder="Votre nom" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Adresse e-mail</label>
+            <input type="email" id="email" class="form-control" placeholder="exemple@mail.com" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Message</label>
+            <textarea id="message" class="form-control" rows="5" placeholder="Votre message ici..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 fw-semibold py-2"
+                  style="background:linear-gradient(90deg,#0d6efd,#6610f2);border:none;">
+            <i class="bi bi-send me-2"></i> Envoyer
+          </button>
+        </form>
+      </div>
+
+      <!-- Coordonnées -->
+      <div class="col-lg-6">
+        <div class="card p-4 shadow-sm border-0 h-100 d-flex flex-column justify-content-between">
+          <div>
+            <h5 class="fw-bold mb-3">Contact direct</h5>
+            <p class="mb-1"><i class="bi bi-envelope-fill text-primary me-2"></i> exaucepatoma4@gmail.com</p>
+            <p class="mb-1"><i class="bi bi-telephone-fill text-primary me-2"></i> +243 827 612 274</p>
+            <p><i class="bi bi-geo-alt-fill text-primary me-2"></i> Kisangani, RD Congo</p>
+
+            <h6 class="fw-bold mt-4">Suivez-moi</h6>
+            <div class="social-links mt-2">
+              <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="social-link"><i class="bi bi-github"></i></a>
+              <a href="#" class="social-link"><i class="bi bi-whatsapp"></i></a>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <a href="cv app patoma.pdf" download class="btn btn-outline-primary w-100 fw-semibold">
+              <i class="bi bi-file-earmark-arrow-down me-2"></i> Télécharger mon CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <!-- FOOTER -->
+<footer class="site-footer text-center py-4 mt-5">
+  <div class="container">
+    <!-- Liens sociaux -->
+    <!-- <div class="footer-social mb-3">
+      <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+      <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+      <a href="#" class="social-link"><i class="bi bi-github"></i></a>
+      <a href="#" class="social-link"><i class="bi bi-whatsapp"></i></a>
+    </div> -->
+
+    <!-- Texte -->
+    <p class="mb-0 text-light small">
+      © <span id="year"></span> <strong>Exaucé PATOMA</strong> — Tous droits réservés.
+    </p>
+    <p class="text-secondary small mt-1">
+      Développé avec ❤️ par <span class="fw-semibold text-primary">Exaucé Dev</span>
+    </p>
+  </div>
+</footer>
+
+
+  <!-- Back to top -->
+  <button id="topBtn"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Typing animation
+    const typingText = document.getElementById("typing-text");
+    const textToType = "Exaucé PATOMA LIMBANGA";
+    let i = 0;
+    function typeEffect() {
+      if (i < textToType.length) {
+        typingText.textContent += textToType.charAt(i);
+        i++;
+        setTimeout(typeEffect, 100);
+      }
+    }
+    window.addEventListener("load", typeEffect);
+
+    // Theme toggle
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+    const savedTheme = localStorage.getItem("theme");
+
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        document.body.classList.add("dark");
+        themeIcon.className = "bi bi-sun-fill";
+      } else {
+        document.body.classList.remove("dark");
+        themeIcon.className = "bi bi-moon-fill";
+      }
+      localStorage.setItem("theme", theme);
+    }
+
+    applyTheme(savedTheme || "light");
+    themeToggle.addEventListener("click", () => {
+      const current = document.body.classList.contains("dark") ? "dark" : "light";
+      applyTheme(current === "dark" ? "light" : "dark");
+    });
+
+    // Navbar scroll
+    const nav = document.getElementById("mainNav");
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 10);
+    });
+
+    // Back to top
+    const topBtn = document.getElementById("topBtn");
+    window.addEventListener("scroll", () => {
+      topBtn.style.display = window.scrollY > 300 ? "flex" : "none";
+    });
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+
+// === Apparition au défilement avec décalage ===
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      obs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+reveals.forEach(el => observer.observe(el));
+
+
+// === Drag & Drop Fichier ===
+const dropZone = document.getElementById("dropZone");
+const fileInput = document.getElementById("fileInput");
+
+dropZone.addEventListener("click", () => fileInput.click());
+
+dropZone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropZone.classList.add("dragover");
+});
+dropZone.addEventListener("dragleave", () => {
+  dropZone.classList.remove("dragover");
+});
+dropZone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropZone.classList.remove("dragover");
+  fileInput.files = e.dataTransfer.files;
+  if (fileInput.files.length > 0) {
+    dropZone.querySelector("p").innerHTML = `<strong>${fileInput.files[0].name}</strong> sélectionné`;
+  }
+});
+
+// Soumission du formulaire
+document.getElementById("hireForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert("Merci ! Votre demande a bien été envoyée. (Démo sans serveur)");
+});
+
+
+// === FORMULAIRE DE CONTACT ===
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  if (!name || !email || !message) {
+    alert("Veuillez remplir tous les champs.");
+    return;
+  }
+
+  // Mailto de secours (ouvre le client mail)
+  const mailto = `mailto:exaucepatoma4@gmail.com?subject=Message de ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0D%0A%0D%0AEmail: ${email}`;
+  window.location.href = mailto;
+
+  // Réinitialiser
+  this.reset();
+  alert("Merci ! Votre message a bien été préparé.");
+});
+
+
+// footer
+// === Année automatique ===
+document.getElementById("year").textContent = new Date().getFullYear();
+
+
+  </script>
+</body>
+</html>
