@@ -237,17 +237,58 @@ body.dark .tech-card {
     .progress .progress-bar { transition: width .8s ease; }
 
     /* === PROJECTS === */
-    .project-card {
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,0.05);
-      background: var(--card);
-      padding: 1.25rem;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 40px rgba(13,110,253,0.1);
-    }
+   /* Projet - Image et animation */
+.project-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  background: #fff;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(13,110,253,0.15);
+}
+
+/* Image de projet */
+.project-image {
+  position: relative;
+  overflow: hidden;
+}
+.project-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.project-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Overlay effet "Voir le projet" */
+.project-image .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13,110,253,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.project-card:hover .overlay {
+  opacity: 1;
+}
+
+/* Mode sombre */
+body.dark .project-card {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+body.dark .project-card .overlay {
+  background: rgba(14,165,255,0.6);
+}
+
 
 
     /* === SERVICES === */
@@ -722,59 +763,74 @@ body.dark .project-card {
     <p class="lead text-muted mb-5">Voici quelques réalisations que j’ai conçues avec passion et expertise :</p>
 
     <div class="row g-4 justify-content-center">
-      
+
       <!-- Projet 1 -->
       <div class="col-md-4 reveal">
-        <div class="project-card rounded-4 shadow-sm h-100 overflow-hidden">
-          <div class="project-image">
-            <img src="images/librairie.png" alt="Application de gestion de vente" loading="lazy" 
-                 onerror="this.src='https://via.placeholder.com/600x400?text=Projet+1';">
+        <a href="http://istmkis.gt.tc/?i=1" target="_blank" class="text-decoration-none text-reset">
+          <div class="project-card rounded-4 shadow-sm h-100 overflow-hidden">
+            <div class="project-image">
+              <img src="images/librairie.png" alt="Application de gestion de vente" loading="lazy"
+                   onerror="this.src='https://via.placeholder.com/600x400?text=Projet+';">
+              <div class="overlay">
+                <span>Voir le projet</span>
+              </div>
+            </div>
+            <div class="p-4 d-flex flex-column">
+              <h5 class="fw-bold mb-2">Application de gestion de vente</h5>
+              <p class="text-muted small mb-3">
+                Application web développée pour la <strong>Librairie Pauline</strong> permettant la gestion des ventes,
+                du stock et de la facturation.
+              </p>
+              <small class="text-muted mt-auto">Technos : HTML, CSS, JS, PHP, Bootstrap, MySQL</small>
+            </div>
           </div>
-          <div class="p-4 d-flex flex-column">
-            <h5 class="fw-bold mb-2">Application de gestion de vente</h5>
-            <p class="text-muted small mb-3">
-              Application web développée pour la <strong>Librairie Pauline</strong> permettant la gestion des ventes, 
-              du stock et de la facturation.
-            </p>
-            <small class="text-muted mt-auto">Technos : HTML, CSS, JS, PHP, Bootstrap, MySQL</small>
-          </div>
-        </div>
+        </a>
       </div>
 
       <!-- Projet 2 -->
       <div class="col-md-4 reveal">
-        <div class="project-card rounded-4 shadow-sm h-100 overflow-hidden">
-          <div class="project-image">
-            <img src="images/img_istm.png" alt="Site institutionnel" loading="lazy"
-                 onerror="this.src='https://via.placeholder.com/600x400?text=Projet+2';">
+        <a href="http://istmkis.gt.tc/" target="_blank" class="text-decoration-none text-reset">
+          <div class="project-card rounded-4 shadow-sm h-100 overflow-hidden">
+            <div class="project-image">
+              <img src="images/img_istm.png" alt="Site institutionnel" loading="lazy"
+                   onerror="this.src='https://via.placeholder.com/600x400?text=Projet+2';">
+              <div class="overlay">
+                <span>Voir le site</span>
+              </div>
+            </div>
+            <div class="p-4 d-flex flex-column">
+              <h5 class="fw-bold mb-2">Site institutionnel</h5>
+              <p class="text-muted small mb-3">
+                Conception d’un site web responsive et professionnel pour un institut local,
+                intégrant un design moderne et un référencement naturel optimisé.
+              </p>
+              <small class="text-muted mt-auto">Technos : WordPress, Bootstrap</small>
+            </div>
           </div>
-          <div class="p-4 d-flex flex-column">
-            <h5 class="fw-bold mb-2">Site institutionnel</h5>
-            <p class="text-muted small mb-3">
-              Conception d’un site web responsive et professionnel pour un institut local, 
-              intégrant un design moderne et un référencement naturel optimisé.
-            </p>
-            <small class="text-muted mt-auto">Technos : WordPress</small>
-          </div>
-        </div>
+        </a>
       </div>
 
       <!-- Projet 3 -->
       <div class="col-md-4 reveal">
-        <div class="project-card rounded-4 shadow-sm h-100 overflow-hidden">
-          <div class="project-image">
-            <img src="images/img_mobile.jpg" alt="Application mobile CONFPROG" loading="lazy"
-                 onerror="this.src='https://via.placeholder.com/600x400?text=Projet+3';">
+        <a href="https://exemple-confprog.netlify.app" target="_blank" class="text-decoration-none text-reset">
+          <div class="project-card rounded-4 shadow-sm h-100 overflow-hidden">
+            <div class="project-image">
+              <img src="images/img_mobile.jpg" alt="Application mobile CONFPROG" loading="lazy"
+                   onerror="this.src='https://via.placeholder.com/600x400?text=Projet+3';">
+              <div class="overlay">
+                <span>Voir le prototype</span>
+              </div>
+            </div>
+            <div class="p-4 d-flex flex-column">
+              <h5 class="fw-bold mb-2">Application mobile (Formation CONFPROG)</h5>
+              <p class="text-muted small mb-3">
+                Prototype d’application mobile développé durant ma formation,
+                centré sur l’expérience utilisateur et l’ergonomie.
+              </p>
+              <small class="text-muted mt-auto">Technos : WinDev Mobile, WLangage, HFSQL</small>
+            </div>
           </div>
-          <div class="p-4 d-flex flex-column">
-            <h5 class="fw-bold mb-2">Application mobile (Formation CONFPROG)</h5>
-            <p class="text-muted small mb-3">
-              Prototype d’application mobile développé durant ma formation, 
-              centré sur l’expérience utilisateur et l’ergonomie.
-            </p>
-            <small class="text-muted mt-auto">Technos : WinDev Mobile, WLangage, HFSQL</small>
-          </div>
-        </div>
+        </a>
       </div>
 
     </div>
@@ -1052,3 +1108,4 @@ document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
+
